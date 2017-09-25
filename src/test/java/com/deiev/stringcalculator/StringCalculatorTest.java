@@ -55,6 +55,11 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void whenNumberIsMoreThanOneThousandThenIgnoreIt() throws Exception {
+        assertResultForString("1,10005,776,8080", 777);
+    }
+
     private void assertResultForString(String input, int expected) {
         int result = stringCalculator.add(input);
         assertEquals(result, expected);

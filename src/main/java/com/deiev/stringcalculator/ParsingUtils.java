@@ -31,21 +31,6 @@ class ParsingUtils {
             result.add(Integer.valueOf(s));
         }
 
-        checkForNegatives(result);
         return result;
-    }
-
-    private static void checkForNegatives(List<Integer> result) {
-        List<Integer> negatives = new ArrayList<>();
-
-        for (Integer number : result) {
-            if (number < 0) {
-                negatives.add(number);
-            }
-        }
-
-        if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("Negative numbers are forbidden: " + negatives);
-        }
     }
 }

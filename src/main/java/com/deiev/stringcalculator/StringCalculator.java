@@ -1,5 +1,6 @@
 package com.deiev.stringcalculator;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,7 +16,34 @@ class StringCalculator {
             numbers = parseNumbers(stringNumbers);
         }
 
+        checkForNegatives(numbers);
+        numbers = filterBigNumbers(numbers);
+
         return sum(numbers);
+    }
+
+    private static void checkForNegatives(List<Integer> result) {
+        List<Integer> negatives = new ArrayList<>();
+
+        for (Integer number : result) {
+            if (number < 0) {
+                negatives.add(number);
+            }
+        }
+
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negative numbers are forbidden: " + negatives);
+        }
+    }
+
+    private List<Integer> filterBigNumbers(List<Integer> numbers) {
+        List<Integer> result = new ArrayList<>();
+        for (Integer number : numbers) {
+            if (number <= 1000) {
+                result.add(number);
+            }
+        }
+        return result;
     }
 
     private int sum(List<Integer> numbers) {
