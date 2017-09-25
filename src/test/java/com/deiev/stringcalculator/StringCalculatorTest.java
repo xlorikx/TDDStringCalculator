@@ -15,7 +15,7 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void whenEmptyStringReturnZero() {
+    public void whenEmptyStringReturnZero() throws Exception {
         String emptyString = "";
         int result = stringCalculator.add(emptyString);
         assertEquals(result, 0);
@@ -27,5 +27,13 @@ public class StringCalculatorTest {
         int intNumberValue = 777;
         int result = stringCalculator.add(stringNumberValue);
         assertEquals(result, intNumberValue);
+    }
+
+    @Test
+    public void whenTwoNumbersReturnTheirSum() throws Exception {
+        String twoComaSeparatedNumbers = "2,5";
+        int intSumOfNumbers = 7;
+        int result = stringCalculator.add(twoComaSeparatedNumbers);
+        assertEquals(result, intSumOfNumbers);
     }
 }
