@@ -19,7 +19,7 @@ class StringCalculator {
         checkForNegatives(numbers);
         numbers = filterBigNumbers(numbers);
 
-        return sum(numbers);
+        return numbers.stream().mapToInt(Integer::intValue).sum();
     }
 
     private static void checkForNegatives(List<Integer> result) {
@@ -44,13 +44,5 @@ class StringCalculator {
             }
         }
         return result;
-    }
-
-    private int sum(List<Integer> numbers) {
-        int sum = 0;
-        for (Integer number : numbers) {
-            sum += number;
-        }
-        return sum;
     }
 }
