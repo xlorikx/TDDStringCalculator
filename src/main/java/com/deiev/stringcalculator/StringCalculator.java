@@ -3,6 +3,7 @@ package com.deiev.stringcalculator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.deiev.stringcalculator.ParsingUtils.parseNumbers;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -17,8 +18,8 @@ class StringCalculator {
         }
 
         checkForNegatives(numbers);
-        numbers = filterBigNumbers(numbers);
 
+        numbers = numbers.stream().filter(e -> e <= 1000).collect(Collectors.toList());
         return numbers.stream().mapToInt(Integer::intValue).sum();
     }
 
@@ -34,15 +35,5 @@ class StringCalculator {
         if (!negatives.isEmpty()) {
             throw new IllegalArgumentException("Negative numbers are forbidden: " + negatives);
         }
-    }
-
-    private List<Integer> filterBigNumbers(List<Integer> numbers) {
-        List<Integer> result = new ArrayList<>();
-        for (Integer number : numbers) {
-            if (number <= 1000) {
-                result.add(number);
-            }
-        }
-        return result;
     }
 }
