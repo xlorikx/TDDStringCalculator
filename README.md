@@ -1,0 +1,1 @@
+String calculator for TDD Kata test assignment.
