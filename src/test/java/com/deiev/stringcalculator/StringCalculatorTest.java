@@ -29,6 +29,11 @@ public class StringCalculatorTest {
         assertResultForString("2,5", 7);
     }
 
+    @Test
+    public void whenMoreThanTwoNumbersReturnTheirSum() throws Exception {
+        assertResultForString("1,2,3,5", 11);
+    }
+
     private void assertResultForString(String input, int expected) {
         int result = stringCalculator.add(input);
         assertEquals(result, expected);
