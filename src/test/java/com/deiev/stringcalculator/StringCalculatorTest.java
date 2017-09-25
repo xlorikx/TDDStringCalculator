@@ -20,4 +20,12 @@ public class StringCalculatorTest {
         int result = stringCalculator.add(emptyString);
         assertEquals(result, 0);
     }
+
+    @Test
+    public void whenSingleNumberReturnIt() throws Exception {
+        String stringNumberValue = "777";
+        int intNumberValue = 777;
+        int result = stringCalculator.add(stringNumberValue);
+        assertEquals(result, intNumberValue);
+    }
 }

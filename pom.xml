@@ -25,6 +25,7 @@
 
     <properties>
         <testng.version>6.11</testng.version>
+        <apache.commons.version>3.6</apache.commons.version>
     </properties>
 
     <dependencies>
@@ -33,6 +34,12 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons.version}</version>
         </dependency>
     </dependencies>
 

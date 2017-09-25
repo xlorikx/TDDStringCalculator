@@ -1,8 +1,16 @@
 package com.deiev.stringcalculator;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 class StringCalculator {
 
     int add(String s) {
-        return 0;
+        int result = 0;
+
+        if (isNotBlank(s)) {
+            result = Integer.valueOf(s);
+        }
+
+        return result;
     }
 }
