@@ -34,6 +34,11 @@ public class StringCalculatorTest {
         assertResultForString("1,2,3,5", 11);
     }
 
+    @Test
+    public void allowNewLineSymbolAsSeparator() throws Exception {
+        assertResultForString("1\n2,3", 6);
+    }
+
     private void assertResultForString(String input, int expected) {
         int result = stringCalculator.add(input);
         assertEquals(result, expected);

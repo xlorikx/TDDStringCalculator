@@ -9,6 +9,8 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 class StringCalculator {
 
+    private static final String separators = "[\n,]";
+
     int add(String stringNumbers) {
         List<Integer> numbers = Collections.emptyList();
 
@@ -20,7 +22,7 @@ class StringCalculator {
     }
 
     private List<Integer> parseNumbers(String numbers) {
-        List<String> separated = Arrays.asList(numbers.split(","));
+        List<String> separated = Arrays.asList(numbers.split(separators));
         List<Integer> result = new ArrayList<>(separated.size());
 
         for (String s : separated) {
