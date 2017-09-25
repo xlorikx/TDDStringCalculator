@@ -20,13 +20,32 @@ class ParsingUtils {
             numbers = numbers.substring(customSeparatorMatcher.group(1).length());
         }
 
+        return mapStringsToIntegers(numbers, separator);
+    }
+
+    private static List<Integer> mapStringsToIntegers(String numbers, String separator) {
         List<String> separatedDigitsAsString = Arrays.asList(numbers.split(separator));
         List<Integer> result = new ArrayList<>(separatedDigitsAsString.size());
 
         for (String s : separatedDigitsAsString) {
-            result.add(Integer.parseInt(s));
+            result.add(Integer.valueOf(s));
         }
 
+        checkForNegatives(result);
         return result;
+    }
+
+    private static void checkForNegatives(List<Integer> result) {
+        List<Integer> negatives = new ArrayList<>();
+
+        for (Integer number : result) {
+            if (number < 0) {
+                negatives.add(number);
+            }
+        }
+
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negative numbers are forbidden: " + negatives);
+        }
     }
 }

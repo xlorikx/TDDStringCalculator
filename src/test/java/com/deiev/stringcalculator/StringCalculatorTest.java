@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
 
 public class StringCalculatorTest {
 
@@ -42,6 +43,16 @@ public class StringCalculatorTest {
     @Test
     public void allowSetCustomSeparator() throws Exception {
         assertResultForString("//;\n1;2", 3);
+    }
+
+    @Test
+    public void whenNegativeNumbersPassedThrowAnExceptionAndReturnNegatives() throws Exception {
+        try{
+            stringCalculator.add("5,-8,4,-1,-5");
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negative numbers are forbidden: [-8, -1, -5]", e.getMessage());
+        }
     }
 
     private void assertResultForString(String input, int expected) {
