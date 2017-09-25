@@ -1,6 +1,5 @@
 package com.deiev.stringcalculator;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,23 +16,12 @@ class StringCalculator {
             numbers = parseNumbers(stringNumbers);
         }
 
-        checkForNegatives(numbers);
+        List<Integer> negatives = numbers.stream().filter(e -> e <= 0).collect(Collectors.toList());
 
-        numbers = numbers.stream().filter(e -> e <= 1000).collect(Collectors.toList());
-        return numbers.stream().mapToInt(Integer::intValue).sum();
-    }
-
-    private static void checkForNegatives(List<Integer> result) {
-        List<Integer> negatives = new ArrayList<>();
-
-        for (Integer number : result) {
-            if (number < 0) {
-                negatives.add(number);
-            }
-        }
-
-        if (!negatives.isEmpty()) {
+        if (negatives.size() != 0) {
             throw new IllegalArgumentException("Negative numbers are forbidden: " + negatives);
         }
+
+        return numbers.stream().filter(e -> e <= 1000).mapToInt(Integer::intValue).sum();
     }
 }
