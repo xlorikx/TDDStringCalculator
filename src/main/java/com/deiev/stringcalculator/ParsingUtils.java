@@ -1,10 +1,10 @@
 package com.deiev.stringcalculator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 class ParsingUtils {
 
@@ -20,17 +20,6 @@ class ParsingUtils {
             numbers = numbers.substring(customSeparatorMatcher.group(1).length());
         }
 
-        return mapStringsToIntegers(numbers, separator);
-    }
-
-    private static List<Integer> mapStringsToIntegers(String numbers, String separator) {
-        List<String> separatedDigitsAsString = Arrays.asList(numbers.split(separator));
-        List<Integer> result = new ArrayList<>(separatedDigitsAsString.size());
-
-        for (String s : separatedDigitsAsString) {
-            result.add(Integer.valueOf(s));
-        }
-
-        return result;
+        return Arrays.stream(numbers.split(separator)).map(Integer::parseInt).collect(Collectors.toList());
     }
 }
