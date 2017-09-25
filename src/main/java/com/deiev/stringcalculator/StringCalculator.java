@@ -9,7 +9,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 class StringCalculator {
 
-    private static final String separators = "[\n,]";
+    private static final String separators = "[\n|,]";
 
     int add(String stringNumbers) {
         List<Integer> numbers = Collections.emptyList();
@@ -32,10 +32,10 @@ class StringCalculator {
         return result;
     }
 
-    private int sum(List<Integer> terms) {
+    private int sum(List<Integer> numbers) {
         int sum = 0;
-        for (Integer term : terms) {
-            sum += term;
+        for (Integer number : numbers) {
+            sum += number;
         }
         return sum;
     }
