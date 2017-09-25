@@ -41,7 +41,7 @@ public class StringCalculatorTest {
 
     @Test
     public void allowSetCustomSeparator() throws Exception {
-        assertResultForString(";\n1;2", 3);
+        assertResultForString("//;\n1;2", 3);
     }
 
     private void assertResultForString(String input, int expected) {
